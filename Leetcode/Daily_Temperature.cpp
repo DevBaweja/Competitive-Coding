@@ -6,6 +6,8 @@ For example, given the list of temperatures T = [73, 74, 75, 71, 69, 72, 76, 73]
 Note: The length of temperatures will be in the range [1, 30000]. Each temperature will be an integer in the range [30, 100].
 */
 // Brute Force
+#include <bits/stdc++.h>
+using namespace std;
 class Solution
 {
 public:

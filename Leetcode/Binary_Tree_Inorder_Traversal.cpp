@@ -44,7 +44,10 @@ Recursive solution is trivial, could you do it iteratively?
  * };
  */
 // Recursive
-class Solution
+#include <bits/stdc++.h>
+using namespace std;
+template <typename TreeNode>
+class SolutionRecursive
 {
 public:
     vector<int> v;
@@ -63,8 +66,9 @@ public:
     }
 };
 
+template <typename TreeNode>
 // Iterative
-class Solution
+class SolutionIterative
 {
 public:
     vector<int> inorderTraversal(TreeNode *root)

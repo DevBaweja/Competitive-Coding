@@ -19,7 +19,7 @@ int binarySearch(int A[], int low, int high, int el)
         return binarySearch(A, mid + 1, high, el);
 }
 
-int findPivot(int A[], int low, int high)
+int improvedSearch(int A[], int low, int high, int el)
 {
     if (high < low)
         return -1;
@@ -35,27 +35,10 @@ int findPivot(int A[], int low, int high)
 
     // Left
     if (A[low] >= A[mid])
-        return findPivot(A, low, mid - 1);
+        return improvedSearch(A, low, mid - 1, el);
     // Right
     if (A[low] < A[mid])
-        return findPivot(A, mid + 1, high);
-}
-
-int pivotedBinarySearch(int A[], int n, int el)
-{
-    int pivot = findPivot(A, 0, n - 1);
-
-    if (pivot == -1)
-        return binarySearch(A, 0, n - 1, el);
-    if (A[pivot] == el)
-        return pivot;
-
-    // Left
-    if (A[0] <= el)
-        return binarySearch(A, 0, pivot - 1, el);
-    // Right
-    if (A[0] > el)
-        return binarySearch(A, pivot + 1, n - 1, el);
+        return improvedSearch(A, mid + 1, high, el);
 }
 
 // Time O(log(n))
@@ -66,5 +49,5 @@ int main()
     int A[] = {30, 40, 50, 10, 20};
     int n = 5;
     int el = 10;
-    cout << pivotedBinarySearch(A, n, el);
+    cout << improvedSearch(A, 0, n - 1, el);
 }

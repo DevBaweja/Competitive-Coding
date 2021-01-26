@@ -31,6 +31,8 @@ n == rating.length
 1 <= n <= 200
 1 <= rating[i] <= 10^5
 */
+#include <bits/stdc++.h>
+using namespace std;
 class Solution
 {
 public:
