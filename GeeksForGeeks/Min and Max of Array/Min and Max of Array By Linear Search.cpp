@@ -41,6 +41,13 @@ struct Pair getMinMax(int A[], int n)
     }
     return minmax;
 }
+// Time O(n)
+
+// Best Case - Increasing Order
+// 1 + (n-2) = n-1
+
+// Worst Case - Decreasing Order
+// Comparison 1 + 2*(n-2) = 2n-3
 
 int main()
 {
