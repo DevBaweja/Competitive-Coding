@@ -30,13 +30,15 @@ void segregate01Type(int A[], int n)
     int right = n - 1;
     while (left < right)
     {
-        if (A[left])
+        switch (A[left])
         {
-            swap(A[left], A[right]);
-            right--;
-        }
-        else
+        case 0:
             left++;
+            break;
+        case 1:
+            swap(A[left], A[right--]);
+            break;
+        }
     }
 }
 // Time- O(n)
@@ -47,7 +49,7 @@ int main()
 {
     int A[] = {0, 1, 0, 1, 1, 1};
     int n = 6;
-    segregate01(A, n);
+    segregate01Type(A, n);
     for (int i = 0; i < n; i++)
         cout << A[i] << " ";
     return 0;
