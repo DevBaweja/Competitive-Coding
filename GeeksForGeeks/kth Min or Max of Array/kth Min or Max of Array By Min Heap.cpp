@@ -40,10 +40,17 @@ void MinHeap::MinHeapify(int i)
     int l = left(i);
     int r = right(i);
     int smallest = i;
-    if (r < size && H[r] < H[i])
-        smallest = r;
     if (l < size && H[l] < H[i])
         smallest = l;
+    if (r < size && H[r] < H[i])
+        smallest = r;
+    if (l < size && r < size && H[l] < H[i] && H[r] < H[i])
+    {
+        if (H[l] < H[r])
+            smallest = l;
+        else
+            smallest = r;
+    }
     // Swapping
     if (smallest != i)
     {
