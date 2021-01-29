@@ -1,56 +1,60 @@
 #include <iostream>
 using namespace std;
 
-class MinHeap
+class MaxHeap
 {
     int *H;
     int size;
 
 public:
-    MinHeap(int A[], int n); // Constructor
-    int getMin() { return H[0]; }
-    void MinHeapify(int i); // Heapify at node index i
-    int extractMin();
+    MaxHeap(int A[], int n); // Constructor
+    int getMax() { return H[0]; }
+    void MaxHeapify(int i); // Heapify at node index i
+    int extractMax();
+    void replaceMax(int x)
+    {
+        H[0] = x;
+        MaxHeapify(0);
+    }
     int parent(int i) { return (i - 1) / 2; }
     int left(int i) { return 2 * i + 1; }
     int right(int i) { return 2 * (i + 1); }
 };
 
-MinHeap::MinHeap(int A[], int n)
+MaxHeap::MaxHeap(int A[], int n)
 {
     H = A;
     size = n;
     int i = size / 2 - 1; // All node except leafs
     while (i >= 0)
     {
-        MinHeapify(i);
+        MaxHeapify(i);
         i--;
     }
 }
 
-void MinHeap::MinHeapify(int i)
+void MaxHeap::MaxHeapify(int i)
 {
     int l = left(i);
     int r = right(i);
-    int smallest = i;
-    if (l < size && H[l] < H[i])
-        smallest = l;
-    if (r < size && H[r] < H[smallest])
-        smallest = r;
-
+    int largest = i;
+    if (l < size && H[l] > H[i])
+        largest = l;
+    if (r < size && H[r] > H[largest])
+        largest = r;
     // Swapping
-    if (smallest != i)
+    if (largest != i)
     {
-        swap(H[i], H[smallest]);
-        MinHeapify(smallest);
+        swap(H[i], H[largest]);
+        MaxHeapify(largest);
     }
 }
 
-int MinHeap::extractMin()
+int MaxHeap::extractMax()
 {
     int root = H[0];
     H[0] = H[size - 1];
-    MinHeapify(0);
+    MaxHeapify(0);
     size--;
     return root;
 }
@@ -62,18 +66,21 @@ int MinHeap::extractMin()
 // ((n-1) - 1) / 2 = n/2 - 1
 // In reverse order
 
-// Time O(n + k*log(n))
-// n - Build Heap
-// k*log(n) - Extract Min
+// Time O( k+ (n-k)*log(k))
+// k - Build Heap
+// (n-k)*log(k) - Extract Max
 
 int kthSmallest(int A[], int n, int k)
 {
-    MinHeap mh(A, n);
+    MaxHeap mh(A, k);
 
-    for (int i = 0; i < k - 1; i++)
-        mh.extractMin();
+    for (int i = k; i < n; i++)
+    {
+        if (A[i] < mh.getMax())
+            mh.replaceMax(A[i]);
+    }
 
-    return mh.getMin();
+    return mh.getMax();
 }
 
 int main()
