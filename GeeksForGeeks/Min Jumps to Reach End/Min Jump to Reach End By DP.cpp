@@ -2,28 +2,28 @@
 using namespace std;
 
 // jumps[k] means min # of jumps to reach k node from start node
-// int minJumps(int A[], int n)
-// {
-//     int *jumps = new int[n];
-//     if (n == 0 || A[0] == 0)
-//         return INT_MAX;
-//     jumps[0] = 0;
+int minJumps(int A[], int n)
+{
+    int *jumps = new int[n];
+    if (n == 0 || A[0] == 0)
+        return INT_MAX;
+    jumps[0] = 0;
 
-//     for (int i = 1; i < n; i++)
-//     {
-//         jumps[i] = INT_MAX;
-//         for (int j = 0; j < i; j++)
-//         {
-//             if (i <= j + A[j] && jumps[j] != INT_MAX)
-//             {
-//                 jumps[i] = min(jumps[i], jumps[j] + 1);
-//                 break;
-//             }
-//         }
-//     }
+    for (int i = 1; i < n; i++)
+    {
+        jumps[i] = INT_MAX;
+        for (int j = 0; j < i; j++)
+        {
+            if (i <= j + A[j] && jumps[j] != INT_MAX)
+            {
+                jumps[i] = min(jumps[i], jumps[j] + 1);
+                break;
+            }
+        }
+    }
 
-//     return jumps[n - 1];
-// }
+    return jumps[n - 1];
+}
 
 // jumps[k] means min # of jumps to reach last node from k node
 int minJumps(int A[], int n)
