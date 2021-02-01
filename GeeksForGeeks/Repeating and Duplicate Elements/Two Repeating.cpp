@@ -104,6 +104,38 @@ pair<int, int> repeatingEquation(int A[], int n)
 // Time- O(n)
 // Space- O(1)
 
+pair<int, int> repeatingXOR(int A[], int n)
+{
+    pair<int, int> p;
+    int R = 0;
+    int n_new = n - 2;
+    for (int i = 0; i < n; i++)
+        R ^= A[i];
+    for (int i = 0; i < n_new; i++)
+        R ^= (i + 1);
+
+    // R = x ^ y
+    // Right Most Bit
+    int set_bit = R & ~(R - 1);
+    int x = 0, y = 0;
+    for (int i = 0; i < n; i++)
+        if (A[i] & set_bit)
+            x ^= A[i];
+        else
+            y ^= A[i];
+
+    for (int i = 0; i < n_new; i++)
+        if ((i + 1) & set_bit)
+            x ^= (i + 1);
+        else
+            y ^= (i + 1);
+    p.first = x;
+    p.second = y;
+    return p;
+}
+// Time- O(n)
+// Space- O(1)
+
 pair<int, int> repeatingNegative(int A[], int n)
 {
     pair<int, int> p;
@@ -131,6 +163,6 @@ int main()
 {
     int A[] = {4, 2, 4, 5, 2, 3, 1};
     int n = 7;
-    pair<int, int> p = repeatingNegative(A, n);
+    pair<int, int> p = repeatingXOR(A, n);
     cout << p.first << " " << p.second;
 }

@@ -58,11 +58,17 @@ int repeatingXOR(int A[], int n)
 
     int n_new = n - 1;
     int R = 0;
+    /*
     for (int i = 0; i < n_new; i++)
     {
         R = R ^ (i + 1) ^ A[i];
     }
     R = R ^ A[n_new];
+    */
+    for (int i = 0; i < n; i++)
+        R ^= A[i];
+    for (int i = 0; i < n_new; i++)
+        R ^= (i + 1);
     return R;
 }
 // Time- O(n)
