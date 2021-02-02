@@ -47,7 +47,7 @@ int main()
     int A[] = {64, 34, 25, 12, 22, 11, 90};
     int n = 7;
 
-    // bubbleSortRe(A, n);
+    // bubbleSort(A, n);
     bubbleSortRecursive(A, n);
 
     for (int i = 0; i < n; i++)
