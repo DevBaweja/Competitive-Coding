@@ -60,8 +60,8 @@ void insertionSortBinary(int A[], int n)
 
 int main()
 {
-    int A[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = 7;
+    int A[] = {12, 11, 13, 5, 6};
+    int n = 5;
 
     insertionSortBinary(A, n);
 
