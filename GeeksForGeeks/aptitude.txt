@@ -1,0 +1,19 @@
+avg of first k multiple of n
+n*(1+2+..k)/k = n*(k(k+1)/2)/k = n*(k+1)/2
+
+avg of k numbers is avg
+each number is 
+multiply by c : new avg = c*avg 
+divide by c : new avg = avg/c
+add by c : new avg = avg + k*c/k = avg + c
+subtract by c : avg - k*c/k = avg - c
+
+consecutive number 
+3 number are x-c, x, x+c
+5 number are x-2c, x-c, x, x+c, x+2c
+
+consecutive even x-2, x, x+2
+
+avg of k is increases by  m unit, replace a to a'
+k*m
+a' = a+k*m

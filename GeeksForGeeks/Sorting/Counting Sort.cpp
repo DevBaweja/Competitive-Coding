@@ -20,10 +20,7 @@ int minimum(int A[], int n)
 void countSort(int A[], int n)
 {
     int maxi = maximum(A, n);
-    int count[maxi];
-    // Init
-    for (int i = 0; i < maxi; i++)
-        count[i] = 0;
+    int count[maxi] = {0};
     // Count
     for (int i = 0; i < n; i++)
         count[A[i] - 1]++;
@@ -49,10 +46,7 @@ void countSortNegative(int A[], int n)
     int maxi = maximum(A, n);
     int mini = minimum(A, n);
     int range = maxi - mini + 1;
-    int count[range];
-    for (int i = 0; i < range; i++)
-        count[i] = 0;
-
+    int count[range] = {0};
     for (int i = 0; i < n; i++)
         count[A[i] - mini]++;
 
@@ -66,6 +60,10 @@ void countSortNegative(int A[], int n)
     for (int i = 0; i < n; i++)
         A[i] = B[i];
 }
+// Range of input
+// Not comparison based sorting
+// Used as sub routine in radix sort
+// Partial Hashing
 
 int main()
 {
