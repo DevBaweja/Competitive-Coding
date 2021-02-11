@@ -1,59 +1,64 @@
 #include <iostream>
 using namespace std;
 
+class Node
+{
+public:
+    int data;
+    Node *next;
+};
+
 class Stack
 {
-    int top;
-    int capacity;
-    int *A;
+    Node *top;
 
 public:
-    Stack(int c)
+    Stack()
     {
-        top = -1;
-        capacity = c;
-        A = new int[capacity];
+        top = new Node();
     };
-    bool isEmpty() { return top == -1; };
-    bool isFull() { return top == capacity - 1; };
+    bool isEmpty() { return top == NULL; };
     void push(int el)
     {
-        if (isFull())
-            return;
-        A[++top] = el;
+        Node *temp = new Node();
+        temp->data = el;
+        temp->next = top;
+        top = temp;
     }
     void pop()
     {
         if (isEmpty())
             return;
-        top--;
+        Node *temp = top;
+        top = top->next;
+        temp->next = NULL;
+        free(temp);
     }
     int peek()
     {
         if (isEmpty())
             return -1;
-        return A[top];
+        return top->data;
     }
 
     void display()
     {
         if (isEmpty())
             return;
-        int temp = top;
-        while (temp >= 0)
+        Node *temp = top;
+        while (temp != NULL)
         {
-            cout << A[temp] << " ";
-            temp--;
+            cout << temp->data << " ";
+            temp = temp->next;
         }
     }
 };
 
 int main()
 {
-    class Stack s(10);
+    class Stack s;
     s.push(10);
     s.push(20);
-    s.isFull();
     s.push(30);
     s.peek();
     s.isEmpty();
