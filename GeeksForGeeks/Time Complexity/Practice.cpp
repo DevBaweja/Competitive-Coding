@@ -39,3 +39,5 @@
 // ^(sqrt(n))
 
 // sqrt(n)+sqrt(n) = 2*sqrt(n) = O(sqrt(n))
+
+// 10^8 operation per second
