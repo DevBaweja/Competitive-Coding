@@ -22,7 +22,10 @@ int main()
             j++;
         }
         else
+        {
+            m[A[i]]--;
             i++;
+        }
         result = max(j - i, result);
     }
     cout << result << endl;

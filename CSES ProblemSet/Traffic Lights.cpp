@@ -32,6 +32,7 @@ int main()
 }
 */
 
+/*
 int main()
 {
     int x;
@@ -57,5 +58,40 @@ int main()
     while (n--)
     {
         // s.find();
+    }
+}
+*/
+
+int main()
+{
+    int x;
+    cin >> x;
+    int n;
+    cin >> n;
+
+    set<int> s;
+    s.insert(0);
+    s.insert(x);
+
+    map<int, int> m;
+    m[x] = 1;
+    while (n--)
+    {
+        int p;
+        cin >> p;
+
+        auto itr = s.lower_bound(p);
+        int r = *itr;
+        --itr;
+        int l = *itr;
+
+        --m[r - l];
+        if (!m[r - l])
+            m.erase(r - l);
+
+        s.insert(p);
+        ++m[r - p];
+        ++m[p - l];
+        cout << (--m.end())->first << " ";
     }
 }
