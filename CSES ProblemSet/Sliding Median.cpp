@@ -2,11 +2,6 @@
 using namespace std;
 
 typedef long long ll;
-
-int binarySearch(vector<int> A, int low, int high)
-{
-}
-
 int main()
 {
     int n, k;
@@ -17,5 +12,7 @@ int main()
 
     int low = 0, high = k - 1;
     int value = A[0];
-    sort(A.begin() + low, A.begin() + high) return 0;
+    for (int i = 0; i < n; i++)
+    {
+    }
 }
