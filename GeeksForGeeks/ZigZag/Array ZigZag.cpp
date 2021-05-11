@@ -15,17 +15,14 @@ void zigzagTwoPointer(vector<int> &A, int n)
     // false means >
     for (int i = 0; i < n - 1; i++)
     {
+        bool s = false;
+        if (flag && A[i] > A[i + 1])
+            s = true;
+        if (!flag && A[i] < A[i + 1])
+            s = true;
 
-        if (flag)
-        {
-            if (A[i] > A[i + 1])
-                swap(A[i], A[i + 1]);
-        }
-        else
-        {
-            if (A[i] < A[i + 1])
-                swap(A[i], A[i + 1]);
-        }
+        if (s)
+            swap(A[i], A[i + 1]);
         flag = !flag;
     }
 }
