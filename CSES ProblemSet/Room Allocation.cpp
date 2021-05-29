@@ -38,5 +38,4 @@ int main()
     cout << s.size() << "\n";
     for (int i = 0; i < n; i++)
         cout << res[i] + 1 << " ";
-    return 0;
 }
