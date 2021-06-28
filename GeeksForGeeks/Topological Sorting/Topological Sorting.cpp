@@ -43,6 +43,6 @@ int main()
         }
     }
 
-    for (int i = 0; i<v; i++>)
+    for (int i = 0; i < v; i++)
         cout << time[i] << " ";
 }
