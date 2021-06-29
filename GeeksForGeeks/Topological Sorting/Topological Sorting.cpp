@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
 int main()
 {
     int v, e;
@@ -45,4 +46,32 @@ int main()
 
     for (int i = 0; i < v; i++)
         cout << time[i] << " ";
+}
+*/
+
+vector<int> topoSort(int v, vector<int> adj[])
+{
+    vector<int> inDegree(v, 0);
+    for (int i = 0; i < v; i++)
+        for (int j : adj[i])
+            inDegree[j]++;
+
+    queue<int> q;
+    for (int i = 0; i < v; i++)
+        if (!inDegree[i])
+            q.push(i);
+    vector<int> res;
+    while (!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+        res.push_back(u);
+        for (int k : adj[u])
+        {
+            inDegree[k]--;
+            if (!inDegree[k])
+                q.push(k);
+        }
+    }
+    return res;
 }
