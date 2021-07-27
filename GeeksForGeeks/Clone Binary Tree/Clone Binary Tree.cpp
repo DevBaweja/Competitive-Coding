@@ -13,7 +13,8 @@ Node *Copying(Node *tree, unordered_map<Node *, Node *> &m)
 {
     if (!tree)
         return tree;
-    Node *copy = new Node(tree->data);
+    Node *copy = new Node();
+    copy->data = tree->data;
     m[tree] = copy;
     copy->left = Copying(tree->left, m);
     copy->right = Copying(tree->right, m);

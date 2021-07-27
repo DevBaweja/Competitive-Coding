@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include <bits/stdc++.h>
+using namespace std;
+
 // DFS
 bool isSafe(int i, int j, int n, int m)
 {
