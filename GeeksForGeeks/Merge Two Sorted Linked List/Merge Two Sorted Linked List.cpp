@@ -69,3 +69,29 @@ Node *sortedMerge(Node *a, Node *b)
     }
     return dummy->next;
 }
+
+Node *sortedMerge(Node *head1, Node *head2)
+{
+    Node *dummy = new Node(-1);
+    Node *head = dummy;
+    while (head1 && head2)
+    {
+        if (head1->data <= head2->data)
+        {
+            head->next = head1;
+            head = head1;
+            head1 = head1->next;
+        }
+        else
+        {
+            head->next = head2;
+            head = head2;
+            head2 = head2->next;
+        }
+    }
+    if (head1)
+        head->next = head1;
+    if (head2)
+        head->next = head2;
+    return dummy->next;
+}

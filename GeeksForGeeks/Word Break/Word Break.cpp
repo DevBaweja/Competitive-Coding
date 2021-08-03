@@ -57,3 +57,7 @@ int wordBreak(string A, vector<string> &B)
     }
     return dp[len];
 }
+
+// BFS
+// Backtracking
+// Trie

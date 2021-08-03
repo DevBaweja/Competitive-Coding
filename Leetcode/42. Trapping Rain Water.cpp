@@ -23,3 +23,31 @@ int trap(vector<int> &height)
         count += min(l[i], r[i]) - height[i];
     return count;
 }
+
+// Two Pointers
+int trappingWater(int a[], int n)
+{
+    int l = 0, r = n - 1;
+    int lm = 0, rm = 0;
+    int c = 0;
+    while (l <= r)
+    {
+        if (a[l] <= a[r])
+        {
+            if (a[l] >= lm)
+                lm = a[l];
+            else
+                c += lm - a[l];
+            l++;
+        }
+        else
+        {
+            if (a[r] >= rm)
+                rm = a[r];
+            else
+                c += rm - a[r];
+            r--;
+        }
+    }
+    return c;
+}
