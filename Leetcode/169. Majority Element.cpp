@@ -16,3 +16,22 @@ int majorityElement(vector<int> &nums)
     }
     return -1;
 }
+
+int majorityElement(vector<int> &nums)
+{
+    int count = 1;
+    int cand = nums[0];
+    for (int el : nums)
+    {
+        if (el == cand)
+            count++;
+        else
+            count--;
+        if (count == 0)
+        {
+            cand = el;
+            count = 1;
+        }
+    }
+    return cand;
+}

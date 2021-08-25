@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Priority Queue with Pruning
 int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int k)
 {
     vector<vector<pair<int, int>>> graph(n);
@@ -36,5 +37,38 @@ int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int
         }
     }
 
+    return -1;
+}
+
+int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int k)
+{
+    vector<vector<vector<int>>> graph(n);
+    for (vector<int> el : flights)
+        graph[el[0]].push_back({el[1], el[2]});
+
+    priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+
+    vector<int> dist(n, INT_MAX);
+    pq.push({0, src, 0});
+
+    while (!pq.empty())
+    {
+        vector<int> el = pq.top();
+        pq.pop();
+        int c = el[0], u = el[1], s = el[2];
+        if (u == dst)
+            return c;
+        if (dist[u] < s)
+            continue;
+        dist[u] = s;
+        if (s > k)
+            continue;
+        for (vector<int> t : graph[u])
+        {
+            int v = t[0];
+            int nc = t[1];
+            pq.push({c + nc, v, s + 1});
+        }
+    }
     return -1;
 }

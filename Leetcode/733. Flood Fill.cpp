@@ -50,3 +50,35 @@ vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int ne
     }
     return image;
 }
+
+// DFS
+bool isSafe(int x, int y, int n, int m)
+{
+    return (x >= 0 && y >= 0 && x < n && y < m);
+}
+
+void floodFillUtil(vector<vector<int>> &image, int curx, int cury, int newColor, int oldColor, int n, int m)
+{
+    image[curx][cury] = newColor;
+
+    vector<int> dirx{0, 1, 0, -1};
+    vector<int> diry{1, 0, -1, 0};
+    int size = 4;
+    for (int k = 0; k < size; k++)
+    {
+        int nextx = curx + dirx[k];
+        int nexty = cury + diry[k];
+        if (isSafe(nextx, nexty, n, m) && image[nextx][nexty] == oldColor)
+            floodFillUtil(image, nextx, nexty, newColor, oldColor, n, m);
+    }
+}
+
+vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
+{
+    int n = image.size();
+    int m = image[0].size();
+    if (image[sr][sc] == newColor)
+        return image;
+    floodFillUtil(image, sr, sc, newColor, image[sr][sc], n, m);
+    return image;
+}

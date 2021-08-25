@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
-int maximizeSum(int a[], int n, int k)
+ll maximizeSum(ll a[], int n, int k)
 {
     sort(a, a + n);
     for (int i = 0; i < n; i++)
@@ -13,8 +14,8 @@ int maximizeSum(int a[], int n, int k)
         }
     }
 
-    int sum = 0;
-    int mini = INT_MAX;
+    ll sum = 0;
+    ll mini = INT_MAX;
     for (int i = 0; i < n; i++)
     {
         sum += a[i];
@@ -23,5 +24,28 @@ int maximizeSum(int a[], int n, int k)
 
     if (k & 1)
         sum -= 2 * mini;
+    return sum;
+}
+
+ll maximizeSum(ll a[], int n, int k)
+{
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for (int i = 0; i < n; i++)
+        pq.push(a[i]);
+
+    while (k--)
+    {
+        int el = pq.top();
+        pq.pop();
+        el *= -1;
+        pq.push(el);
+    }
+    int sum = 0;
+    while (!pq.empty())
+    {
+        int el = pq.top();
+        pq.pop();
+        sum += el;
+    }
     return sum;
 }
