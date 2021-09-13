@@ -66,3 +66,17 @@ int maximumPath(int n, vector<vector<int>> matrix)
         res = max(res, matrix[0][j]);
     return res;
 }
+
+int maximumPath(int n, vector<vector<int>> m)
+{
+    for (int i = n - 2; i >= 0; i--)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            int l = (j == 0) ? 0 : m[i + 1][j - 1];
+            int r = (j == n - 1) ? 0 : m[i + 1][j + 1];
+            m[i][j] += max({m[i + 1][j], l, r});
+        }
+    }
+    return *max_element(m[0].begin(), m[0].end());
+}

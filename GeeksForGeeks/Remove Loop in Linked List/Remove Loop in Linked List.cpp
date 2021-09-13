@@ -17,14 +17,11 @@ void removeLoop(Node *head)
 {
     unordered_set<Node *> s;
     Node *temp = head;
-    while (temp && temp->next)
+    while (temp)
     {
-        if (s.find(temp->next) != s.end())
-        {
-            temp->next = NULL;
-            return;
-        }
         s.insert(temp);
+        if (s.find(temp->next) != s.end())
+            temp->next = NULL;
         temp = temp->next;
     }
 }
