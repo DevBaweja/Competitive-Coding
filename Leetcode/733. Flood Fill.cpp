@@ -82,3 +82,46 @@ vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int ne
     floodFillUtil(image, sr, sc, newColor, image[sr][sc], n, m);
     return image;
 }
+
+bool isSafe(int x, int y, int n, int m)
+{
+    return (x >= 0 && y >= 0 && x < n && y < m);
+}
+vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
+{
+    int n = image.size();
+    int m = image[0].size();
+
+    int oldColor = image[sr][sc];
+    if (oldColor == newColor)
+        return image;
+
+    queue<pair<int, int>> q;
+    q.push({sr, sc});
+    image[sr][sc] = newColor;
+    while (!q.empty())
+    {
+        int count = q.size();
+        while (count--)
+        {
+            pair<int, int> p = q.front();
+            q.pop();
+            int curx = p.first;
+            int cury = p.second;
+            vector<int> dirx{1, 0, -1, 0};
+            vector<int> diry{0, 1, 0, -1};
+            int size = 4;
+            for (int k = 0; k < size; k++)
+            {
+                int nextx = curx + dirx[k];
+                int nexty = cury + diry[k];
+                if (isSafe(nextx, nexty, n, m) && image[nextx][nexty] == oldColor)
+                {
+                    q.push({nextx, nexty});
+                    image[nextx][nexty] = newColor;
+                }
+            }
+        }
+    }
+    return image;
+}
