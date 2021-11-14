@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 typedef long long ll;
+
 int main()
 {
     string s;
@@ -22,4 +22,22 @@ int main()
         }
     }
     cout << result;
+}
+
+int main()
+{
+    string str;
+    cin >> str;
+
+    ll count = 1;
+    ll res = 1;
+    for (int i = 1; i < str.size(); i++)
+    {
+        if (str[i - 1] == str[i])
+            count++;
+        else
+            count = 1;
+        res = max(res, count);
+    }
+    cout << res;
 }

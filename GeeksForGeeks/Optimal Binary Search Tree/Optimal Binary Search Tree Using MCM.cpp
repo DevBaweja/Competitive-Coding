@@ -77,3 +77,45 @@ int optimalSearchTree(int keys[], int freq[], int n)
     }
     return dp[0][n - 1];
 }
+
+// DP Maximum DP Left Right
+int mctFromLeafValuesUtil(vector<int> &arr, int low, int high, map<pair<int, int>, int> &m, vector<vector<int>> &dp)
+{
+    if (low == high)
+        return 0;
+
+    if (m.find({low, high}) != m.end())
+        return m[{low, high}];
+
+    int sum = INT_MAX;
+    for (int k = low; k < high; k++)
+    {
+        int l = mctFromLeafValuesUtil(arr, low, k, m, dp);
+        int r = mctFromLeafValuesUtil(arr, k + 1, high, m, dp);
+        int maxl = dp[low][k];
+        int maxr = dp[k + 1][high];
+        sum = min(sum, l + r + maxl * maxr);
+    }
+    return m[{low, high}] = sum;
+}
+
+int mctFromLeafValues(vector<int> &arr)
+{
+    int n = arr.size();
+    map<pair<int, int>, int> m;
+
+    vector<vector<int>> dp(n, vector<int>(n, 0));
+
+    for (int g = 0; g < n; g++)
+    {
+        for (int i = 0, j = g; j < n; i++, j++)
+        {
+            if (!g)
+                dp[i][i] = arr[i];
+            else
+                dp[i][j] = max(dp[i][j - 1], arr[j]);
+        }
+    }
+
+    return mctFromLeafValuesUtil(arr, 0, n - 1, m, dp);
+}

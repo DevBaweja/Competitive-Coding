@@ -5,22 +5,17 @@ string longestPalindrome(string s)
 {
     int n = s.size();
     vector<vector<bool>> dp(n, vector<bool>(n, false));
-    string res;
+    pair<int, int> p;
     for (int g = 0; g < n; g++)
     {
         for (int i = 0, j = g; j < n; i++, j++)
         {
-            if (g == 0)
+            if ((g == 0) || (s[i] == s[j] && (g == 1 || dp[i + 1][j - 1])))
+            {
                 dp[i][j] = true;
-            else if (g == 1)
-                dp[i][j] = (s[i] == s[j]);
-            else
-                dp[i][j] = (s[i] == s[j] && dp[i + 1][j - 1]);
-
-            if (dp[i][j])
-                res = s.substr(i, j - i + 1);
+                p = {i, j - i + 1};
+            }
         }
     }
-
-    return res;
+    return s.substr(p.first, p.second);
 }
