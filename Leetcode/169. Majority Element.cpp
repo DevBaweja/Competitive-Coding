@@ -17,6 +17,7 @@ int majorityElement(vector<int> &nums)
     return -1;
 }
 
+// Moore Voting Algorithm
 int majorityElement(vector<int> &nums)
 {
     int count = 1;
