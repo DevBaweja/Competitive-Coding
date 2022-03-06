@@ -11,9 +11,21 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int maxDepth(TreeNode *root)
+int sumOfLeftLeavesUtil(TreeNode *root, bool side)
 {
     if (!root)
         return 0;
-    return 1 + max(maxDepth(root->left), maxDepth(root->right));
+    if (!root->left && !root->right)
+    {
+        if (side)
+            return root->val;
+        return 0;
+    }
+
+    return sumOfLeftLeavesUtil(root->left, true) + sumOfLeftLeavesUtil(root->right, false);
+}
+
+int sumOfLeftLeaves(TreeNode *root)
+{
+    return sumOfLeftLeavesUtil(root, false);
 }

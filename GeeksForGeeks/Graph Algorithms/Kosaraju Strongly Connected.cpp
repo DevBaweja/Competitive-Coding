@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Topological Sort and Reverse Graph DFS Order
 void dfs(int cur, vector<int> adj[], vector<bool> &vis, vector<int> &order)
 {
     vis[cur] = true;

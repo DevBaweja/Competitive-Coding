@@ -75,10 +75,7 @@ int findMaxLength(vector<int> &nums)
     for (int i = 0; i < nums.size(); i++)
     {
         int el = nums[i];
-        if (el)
-            sum++;
-        else
-            sum--;
+        sum += !el ? -1 : 1;
         if (m.find(sum) != m.end())
             res = max(res, i - m[sum]);
         else

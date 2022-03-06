@@ -11,9 +11,18 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int maxDepth(TreeNode *root)
+int findTiltUtil(TreeNode *root, int &sum)
 {
     if (!root)
         return 0;
-    return 1 + max(maxDepth(root->left), maxDepth(root->right));
+    int left = findTiltUtil(root->left, sum);
+    int right = findTiltUtil(root->right, sum);
+    sum += abs(left - right);
+    return left + right + root->val;
+}
+int findTilt(TreeNode *root)
+{
+    int sum = 0;
+    findTiltUtil(root, sum);
+    return sum;
 }
