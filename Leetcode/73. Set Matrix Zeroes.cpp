@@ -64,6 +64,39 @@ void setZeroes(vector<vector<int>> &grid)
 }
 
 // Using first row and col
+void setZeroes(vector<vector<int>>& matrix) {
+    int n = matrix.size();
+    int m = matrix[n-1].size();
+
+    vector<int> row(n, -1);
+    vector<int> col(m, -1);
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++) {
+            if(matrix[i][j] == 0) {
+                row[i] = 0;
+                col[j] = 0;
+            }
+        }
+    }
+
+    for(int i=0; i<n; i++) {
+        if(row[i] == 0) {
+            for(int j=0; j<m; j++) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+    for(int j=0; j<m; j++) {
+        if(col[j] == 0) {
+            for(int i=0; i<n; i++) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+    
+}
+
+// Using first row and col
 // Space - O(1)
 void setZeroes(vector<vector<int>> &grid)
 {
@@ -149,4 +182,42 @@ void setZeroes(vector<vector<int>> &grid)
         for (int j = 0; j < m; j++)
             grid[0][j] = 0;
     }
+}
+
+void setZeroes(vector<vector<int>>& matrix) {
+    int n = matrix.size();
+    int m = matrix[n-1].size();
+
+    bool fr = false, fc = false;
+    for(int i=0; i<n; i++)
+        fc |= !matrix[i][0];
+    for(int j=0; j<m; j++)
+        fr |= !matrix[0][j];
+    
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++) {
+            if(matrix[i][j] == 0) {
+                matrix[i][0] = 0;
+                matrix[0][j] = 0;
+            }
+        }
+    }
+
+    for(int i=1; i<n; i++) {
+        for(int j=1; j<m; j++) {
+            if(matrix[i][0] == 0 || matrix[0][j] == 0) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+    
+    if(fr){
+        for(int j=0; j<m; j++)
+            matrix[0][j] = 0;
+    }
+    if(fc){
+        for(int i=0; i<n; i++)
+            matrix[i][0] = 0;
+    }
+
 }

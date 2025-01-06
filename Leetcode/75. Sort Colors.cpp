@@ -23,6 +23,23 @@ void sortColors(vector<int> &nums)
         nums[k++] = 2;
 }
 
+void sortColors(vector<int>& nums) {
+    int r = 0, b = 0, g = 0;
+    for(int &el: nums) {
+        r += (!el);
+        b += (el&1);
+        g += !!(el&2);
+    }
+    
+    int i = 0;
+    while(r--)
+        nums[i++] = 0;
+    while(b--)
+        nums[i++] = 1;
+    while(g--)
+        nums[i++] = 2;
+}
+
 // Dutch Flag Algorithm
 void sortColors(vector<int> &nums)
 {
@@ -39,3 +56,5 @@ void sortColors(vector<int> &nums)
             swap(nums[mid], nums[high--]);
     }
 }
+
+    

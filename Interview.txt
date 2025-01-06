@@ -1,0 +1,100 @@
+- 2 medium
+- 1 hard
+
+Sorting Algo
+
+Binary Search
+Check is a BT is BST or not - medium
+Search in Sorted Matrix - medium
+Factory Machines CSES Problem - hard
+
+Hashing
+Group Anagrams - medium
+Longest Subarray With Equal Number Of Zeroes And Ones - medium
+Find Itinerary From Tickets pepcoding - easy
+
+Prefix Sum
+560. Subarray Sum Equals K - medium
+
+Linked List
+Clone linked list with random pointer - medium
+Flattening of a LinkedList - hard
+
+DLL
+LRU - hard
+
+Stack
+
+
+DP
+0 - 1 knapsack - medium
+Best Time to Buy and Sell Stock with Cooldown - hard
+Longest Palindromic Substring - gap DP hard
+Edit Distance - hard
+97. Interleaving String 
+
+
+Greedy
+1094. Car Pooling - medium
+2410. Maximum Matching of Players With Trainers - medium
+
+Sliding
+Longest Substring With At Most K Unique Characters - medium
+Count Of Substrings Having All Unique Characters - medium
+525. Contiguous Array
+
+Graph
+Rotten Orange - medium
+
+
+Backtracking
+
+
+---
+
+Sliding Window
+Longest Substring With At Most K Unique Characters - medium (Algo n DS) - ..
+1004. Max Consecutive Ones III - medium (Algo)
+
+Greedy
+2410. Maximum Matching of Players With Trainers - medium (Algo)
+1094. Car Pooling - medium hard (Algo n DS)
+
+Tree
+236. Lowest Common Ancestor of a Binary Tree - medium
+98. Validate Binary Search Tree - medium easy (DS)
+112. Path Sum and 113. Path Sum II - medium (Algo n DS) 
+437. Path Sum III - medium hard (Algo n DS) Backtracking
+103. Binary Tree Zigzag Level Order Traversal - medium hard (BFS + Stack)
+109. Convert Sorted List to Binary Search Tree - medium hard (DS n Algo)
+Find the maximum path sum between two leaves of a binary tree
+
+
+Stack
+856. Score of Parentheses - medium hard
+735. Asteroid Collision - medium hard(DS)
+
+DP
+1143. Longest Common Subsequence - medium l1 (Top Down and Bottom Up)
+300. Longest Increasing Subsequence - medium l2 (considering last element)
+55. Jump Game - medium
+
+
+494. Target Sum
+516. Longest Palindromic Subsequence
+Coin Change
+Paint House - Hard
+
+
+Longest Subarray With Equal Number Of Zeroes And Ones
+
+
+--
+
+Prefix Sum and Hashing
+
+Longest Sub-Array with Sum K
+525. Contiguous Array
+
+
+Invest 10k in learning

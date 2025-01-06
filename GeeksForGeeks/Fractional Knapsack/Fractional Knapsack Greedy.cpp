@@ -36,3 +36,21 @@ double fractionalKnapsack(int W, Item arr[], int n)
     }
     return fvalue;
 }
+
+static bool compare(Item &a, Item &b) {
+    return ((double)a.value/a.weight) > ((double)b.value/b.weight);
+}
+double fractionalKnapsack(int w, Item arr[], int n) {
+    sort(arr, arr+n, compare);
+    int cur = 0;
+    double res = 0;
+    while(cur < n && arr[cur].weight <= w) {
+        res += arr[cur].value;
+        w -= arr[cur].weight;
+        cur++;
+    }
+    if(w && cur<n) {
+        res += w*((double)arr[cur].value/arr[cur].weight);
+    }
+    return res;
+}

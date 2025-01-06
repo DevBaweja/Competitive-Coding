@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// s = aaabbccd and k = 2
 // Sliding Window
 int main()
 {

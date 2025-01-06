@@ -35,3 +35,19 @@ int subarraySum(vector<int> &nums, int target)
     }
     return count;
 }
+
+int subarraySum(vector<int>& nums, int k) {
+    int n = nums.size();
+    int res = 0;
+    unordered_map<int, int> mp;
+    int sum = 0;
+    mp[sum] = 1;
+    for(int el: nums) {
+        sum += el;
+        if(mp.find(sum - k) != mp.end()) {
+            res += mp[sum-k];
+        }
+        mp[sum]++;
+    }
+    return res;
+}

@@ -1,0 +1,4 @@
+3193. Count the Number of Inversions
+775. Global and Local Inversions
+33. Search in Rotated Sorted Array
+15. 3Sum

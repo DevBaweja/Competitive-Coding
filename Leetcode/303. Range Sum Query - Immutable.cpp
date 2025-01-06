@@ -21,3 +21,25 @@ public:
         return b - a;
     }
 };
+
+// Prefix Sum
+class NumArray {
+public:
+    vector<int> prefix;
+    // O(n)
+    NumArray(vector<int>& nums) {
+        int n = nums.size();
+        prefix.push_back(nums[0]);
+        for(int i=1; i<n; i++)
+            prefix.push_back(prefix.back() + nums[i]);
+    }
+    
+    // O(1) for every query
+    int sumRange(int left, int right) {
+        if(!left)  return prefix[right];
+        return prefix[right] - prefix[left-1];
+    }
+};
+
+// TODO
+// Lazy propagation for optimization
